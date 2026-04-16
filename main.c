@@ -87,7 +87,7 @@ static void MY_delayCycles(volatile uint32_t c) {
 
 #define DMA_TRANSFER_SIZE_WORDS (2)
 
-const uint32_t SrcData[DMA_TRANSFER_SIZE_WORDS] = {0x20252984u, 0x19051905u};
+const uint32_t SrcData[DMA_TRANSFER_SIZE_WORDS] = {0x1973A314u, 0x19051905u};
 uint32_t DstData[DMA_TRANSFER_SIZE_WORDS];
 volatile uint32_t displayNumber = 0;
 
@@ -96,7 +96,8 @@ int main(void) {
     MY_init();
 
     DstData[0] = 0x00000000u;
-    
+    DstData[1] = 0x00000000u;
+
     while (1) {
         switch (displayNumber) {                
             case 7: LED_Controller((uint32_t)(DstData[0]%16));
