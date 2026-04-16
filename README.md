@@ -46,6 +46,25 @@ Disassemble the ELF file to inspect the generated machine code and assembly.
 arm-none-eabi-objdump -d {name}.elf
 ```
 
+## Flash
+
+Use OpenOCD to program the ELF file:
+
+```sh
+openocd -f mspm0c1104_xds110.cfg 
+```
+
+Open another shell.
+
+```sh
+nc localhost 4444
+init
+reset halt
+flash write_image erase dma.bin 0x00000000
+verify_image dma.bin 0x00000000
+reset run
+```
+
 ## Repository Structure
 
 ### `mspm0c1104.ld`
