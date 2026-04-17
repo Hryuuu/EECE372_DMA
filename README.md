@@ -12,15 +12,12 @@ Some code in this repository was generated with Claude (Anthropic, 2026). Any su
 ```sh
 # Compile
 arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -ffreestanding -fno-builtin \
-    -c startup_mspm0c1104.c -o startup_mspm0c1104.o
-
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -ffreestanding -fno-builtin \
-    -c main.c -o main.o
+    -c {your}.c -o {your}.o
 
 # Link
 arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -ffreestanding -fno-builtin \
     -T mspm0c1104.ld -nostdlib \
-    startup_mspm0c1104.o main.o -o dma.elf
+    {object files} -o dma.elf
 
 # Convert to a raw binary
 arm-none-eabi-objcopy -O binary dma.elf dma.bin
