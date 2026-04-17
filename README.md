@@ -88,6 +88,8 @@ Because each example may require different interrupt handlers, check the vector 
 
 ### Additional Resources
 
+- ARMv6-M Architecture Reference Manual
+  https://developer.arm.com/documentation/ddi0419/e/
 - MSPM0 Development Guide  
   https://www.ti.com/kr/lit/pdf/slaaed1
 - Arm Cortex-M0+ User Guide  
