@@ -82,7 +82,12 @@ static void MY_init(void) {
 }
 
 static void MY_delayCycles(volatile uint32_t c) {
-    while(c-- != 0u) __asm volatile ("nop"); 
+   __asm volatile (
+        ".syntax unified \n"  //Avoid compiler error
+        "1: subs %0, #1 \n"
+        "bne 1b \n"
+        : "+r" (c) // R/W
+    );
 }
 
 #define DMA_TRANSFER_SIZE_WORDS (2)
@@ -120,7 +125,7 @@ int main(void) {
         }
         displayNumber++;
         if(displayNumber>7) displayNumber=0;
-        MY_delayCycles(4000000);
+        MY_delayCycles(8000000);
     }
 }
 
